@@ -35,10 +35,10 @@ Upload the agent after changes are made.
 valkyrie agent push terminus2-v1.0.0
 ```
 
-Run a benchmark using Terminus2 as the agent. Specify `--model <MODEL>` to set the model passed into Terminus2.
+Run Terminal-Bench using Terminus2 as the agent. Specify `--model <MODEL>` to set the model passed into Terminus2.
 
 ```bash
-valkyrie run start --benchmark swebench --agent terminus2-v1.0.0 --model openai/gpt-4o -s OPENAI_API_KEY <CLOUD_KEYNAME> --concurrency 10 --slice :10
+valkyrie run start --benchmark terminal-bench --agent terminus2-v1.0.0 --model openai/gpt-4o -s OPENAI_API_KEY <CLOUD_KEYNAME> --concurrency 10 --slice :10
 ```
 
 ## Output Files
