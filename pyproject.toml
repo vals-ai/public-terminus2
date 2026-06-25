@@ -1,0 +1,24 @@
+[project]
+name = "terminus2"
+version = "0.1.0"
+description = "Terminus 2 - Terminal-based AI agent"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "aiohttp>=3.13.5",
+    "dirhash>=0.5.0",
+    "jinja2>=3.1.6",
+    "model-library @ git+ssh://git@github.com/vals-ai/model-proxy.git@dev",
+    "shortuuid>=1.0.13",
+    "toml>=0.10.2",
+]
+
+[project.scripts]
+terminus2 = "terminus2.cli:main"
+
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
