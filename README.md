@@ -1,22 +1,55 @@
-# Terminus 2
+# Terminus2
 
-## Installation
+Terminus2 contract for Valkyrie. The wrapper installs Terminus2, runs it against the task prompt, and writes the trajectory under `/logs/terminus2`.
+
+For local CLI usage, install the package with `uv sync` and run `terminus2 --help`.
+
+## Configuration
+
+- Secrets: `OPENAI_API_KEY`, `ANTHROPIC_API_KEY`, `GOOGLE_API_KEY`
+- Model: required via `--model`
+- Final output: `/logs/terminus2`
+- Optional kwargs: `temperature`, `max_turns`, `parser`, `reasoning`, `reasoning_effort`, `api_base`
+
+The model is passed through to Terminus2 as `--model`. When set, `api_base` is passed through as `--api-base`.
+
+## Usage with Valkyrie
+
+We assume if you are here that you have [Valkyrie](https://github.com/vals-ai/Valkyrie) installed. If not, navigate to the [main repository](https://github.com/vals-ai/Valkyrie) and get started.
+
+Install the agent from GitHub using Valkyrie for future use.
 
 ```bash
-uv sync
+valkyrie agent install https://github.com/vals-ai/public-terminus2
 ```
 
-## CLI Usage
+Download the agent, visit the [documentation](https://github.com/vals-ai/Valkyrie/blob/dev/docs/CONTRACTS.md) on **contract.yaml** if you would like to make any modifications.
 
 ```bash
-# Validate an ATIF trajectory file
-terminus2 validate trajectory.json
-
-# Run the agent (requires a container environment)
-terminus2 run "Fix the failing test in src/utils.py" -m anthropic/claude-sonnet-4-20250514
+valkyrie agent download terminus_2
 ```
 
-### Run options
+Upload the agent after changes are made.
+
+```bash
+valkyrie agent push terminus_2
+```
+
+Run a benchmark using Terminus2 as the agent. Specify `--model <MODEL>` to set the model passed into Terminus2.
+
+```bash
+valkyrie run start --benchmark swebench --agent terminus_2 --model openai/gpt-4o -s OPENAI_API_KEY <CLOUD_KEYNAME> --concurrency 10 --slice :10
+```
+
+## Output Files
+
+The run writes the Terminus2 output directory to `/logs/terminus2`, including:
+
+- `trajectory.json`
+- `trajectory.cont-*.json` when linear history splits are enabled
+- `trajectory.summarization-*.json` when summarization subagents run
+
+## Run options
 
 | Flag | Description |
 |---|---|
