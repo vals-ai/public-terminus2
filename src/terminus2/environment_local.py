@@ -6,7 +6,6 @@ from pathlib import Path
 
 from terminus2.environment_base import BaseEnvironment, ExecResult
 from terminus2.environment_type import EnvironmentType
-from terminus2.task.config import EnvironmentConfig
 from terminus2.trial.paths import TrialPaths
 
 

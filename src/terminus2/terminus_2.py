@@ -136,6 +136,8 @@ class Terminus2(BaseAgent):
             config_kwargs["reasoning_effort"] = reasoning_effort
         if reasoning is not None:
             config_kwargs["reasoning"] = reasoning
+        if api_base is not None:
+            config_kwargs["custom_endpoint"] = api_base
         override_config = LLMConfig(**config_kwargs)
         if llm:
             logger.warning("running with pre-existing LLM")

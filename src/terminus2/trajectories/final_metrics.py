@@ -8,7 +8,7 @@ from pydantic import BaseModel, Field
 class FinalMetrics(BaseModel):
     """Aggregate statistics for the entire trajectory.
 
-    Token fields align with QueryResultMetadata from model-proxy.
+    Token fields align with QueryResultMetadata from model-library.
     """
 
     total_prompt_tokens: int | None = Field(

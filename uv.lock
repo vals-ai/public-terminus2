@@ -1,5 +1,5 @@
 version = 1
-revision = 3
+revision = 2
 requires-python = ">=3.12"
 resolution-markers = [
     "python_full_version >= '3.13'",
@@ -1002,8 +1002,8 @@ wheels = [
 
 [[package]]
 name = "model-library"
-version = "0.1.13.dev174+g2547bee01"
-source = { git = "ssh://git@github.com/vals-ai/model-proxy.git?rev=dev#2547bee01563903e8c8187e458ea14b35350ef47" }
+version = "0.1.25"
+source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "ai21" },
     { name = "anthropic", extra = ["aiohttp"] },
@@ -1021,6 +1021,10 @@ dependencies = [
     { name = "tiktoken" },
     { name = "typing-extensions" },
     { name = "xai-sdk" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/82/d4/e7885bb71d7a7b56e6ab2cd5a422bdd240d901dbe1bd7d076786c91bf41c/model_library-0.1.25.tar.gz", hash = "sha256:12aaad97d729969879c2e68d22dbbb0434c27dfea0083b5e1e3b6470fe13cd7f", size = 484621, upload-time = "2026-05-05T19:52:34.641Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/25/19/bf2e7517a3d141d421ddf99540b6555da4890b7412b18f88a793c56b472e/model_library-0.1.25-py3-none-any.whl", hash = "sha256:a0aacc7395f679040926db515d59c07359698912a1ccde4bee52cf59e7ac8fdb", size = 194196, upload-time = "2026-05-05T19:52:32.981Z" },
 ]
 
 [[package]]
@@ -1772,7 +1776,7 @@ requires-dist = [
     { name = "aiohttp", specifier = ">=3.13.5" },
     { name = "dirhash", specifier = ">=0.5.0" },
     { name = "jinja2", specifier = ">=3.1.6" },
-    { name = "model-library", git = "ssh://git@github.com/vals-ai/model-proxy.git?rev=dev" },
+    { name = "model-library" },
     { name = "shortuuid", specifier = ">=1.0.13" },
     { name = "toml", specifier = ">=0.10.2" },
 ]

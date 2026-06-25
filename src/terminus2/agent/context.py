@@ -9,7 +9,7 @@ from terminus2.agent.rollout_detail import RolloutDetail
 class AgentContext(BaseModel):
     """Token usage and cost metrics for an agent execution.
 
-    Token fields align with QueryResultMetadata from model-proxy.
+    Token fields align with QueryResultMetadata from model-library.
     Accumulates metadata from LLM calls via the accumulate() method.
     """
 
