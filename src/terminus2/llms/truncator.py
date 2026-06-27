@@ -49,10 +49,14 @@ class Truncator:
         self.chat = chat
         self.llm = llm
         self._logger = logger
-        self.context_limit = get_model_context_limit(llm)
+        self.context_limit: int | None = None
+
+    async def load_context_limit(self) -> None:
+        self.context_limit = await get_model_context_limit(self.llm)
 
     async def unwind(self) -> None:
         """Remove recent messages until we have enough free tokens."""
+        assert self.context_limit is not None, "context limit not loaded"
         while len(self.chat.messages) > 1:  # Keep at least the first message
             current_tokens = await self.llm.count_tokens(self.chat.messages)
             free_tokens = self.context_limit - current_tokens
