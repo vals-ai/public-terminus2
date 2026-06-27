@@ -1101,6 +1101,7 @@ so ask everything you need to know."""
     async def run(self, instruction: str, environment: BaseEnvironment, context: AgentContext) -> None:
         self._chat = Chat(self._llm, metrics_dir=self.logs_dir)
         self.truncator = Truncator(self._chat, self._llm, self._logger)
+        await self.truncator.load_context_limit()
         self._context = context
 
         if self._session is None:
